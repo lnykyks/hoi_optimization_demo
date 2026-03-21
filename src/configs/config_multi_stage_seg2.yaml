@@ -1,0 +1,202 @@
+# 全局 optimization：Stage1 和 Stage2 都会继承这些配置，除非被各自 stage 覆盖
+optimization:
+  device: cuda:0
+  using_hand: right
+  optimizer: adam
+  learning_rate: 0.002
+
+log:
+  step_interval: 20
+
+input:
+  mano_param_seq_dir: data/parameters/flip_milk_1
+  obj_info_dir: data/parameters/flip_milk_1
+  obj_mesh_fname: canonical_obj.ply
+  obj_6dof_fname: obj_6dof.npy
+  contact_fname: contact_period.txt
+
+  mano_seg_path: assets/mano_supplement/mano_segmentation_detail.json
+  palm_config_path: assets/mano_supplement/palm_points.json
+
+output:
+  root: outputs
+  prefix: null
+  suffix: null
+  structure:
+    sub_dirs:
+      - log
+      - backup
+      - vis:
+        - initial
+        - optimized
+        - render
+      - results
+    concrete_dir: {}
+  backup:
+    - code
+  bashes:
+    zip: run_zip.sh
+    render: run_render_video.sh
+
+# Stage0：优化掌心：把掌心拉出来
+stage0:
+  learning_rate: 0.005
+  iterations: 75
+
+  alternatives:
+    - alter:
+        name: alter0
+        iterations: 75
+        parameters:
+          mano_pose: true
+          mano_rotation: false
+          mano_translation: false
+        
+        using_mano_parts:
+          optimize_parts:
+            - palm
+            - index_inner_tip
+            - middle_inner_tip
+            - ring_inner_tip
+            - little_inner_tip
+          ignore_parts:
+            - palm_wrist
+            - thumb_inner_tip
+            - thumb_inner_root
+            - index_inner_root
+            - middle_inner_root
+            - ring_inner_root
+            - little_inner_root
+            - hand_back
+            - thumb_outer_tip
+            - thumb_outer_root
+            - index_outer_tip
+            - index_outer_root
+            - middle_outer_tip
+            - middle_outer_root
+            - ring_outer_tip
+            - ring_outer_root
+            - little_outer_tip
+            - little_outer_root
+            - null
+            
+        objectives:
+          penetration: 0
+          contact: 0.0
+          regularization: 0.0
+          smooth: 300000
+          thumb_open: 1
+          obj_position: 0
+
+        kwargs:
+          smooth_extend_frames: 20
+          smooth_all: true
+          use_thumb_open_mask: false
+
+stage1:
+  learning_rate: 0.005
+  iterations: 150
+
+  alternatives:
+    - alter:
+        name: alter1
+        iterations: 100
+        parameters:
+          mano_pose: false
+          mano_rotation: false
+          mano_translation: true
+        
+        using_mano_parts:
+          optimize_parts:
+            - palm
+            - index_inner_tip
+            - middle_inner_tip
+            - ring_inner_tip
+            - little_inner_tip
+          ignore_parts:
+            - palm_wrist
+            - thumb_inner_tip
+            - thumb_inner_root
+            - index_inner_root
+            - middle_inner_root
+            - ring_inner_root
+            - little_inner_root
+            - hand_back
+            - thumb_outer_tip
+            - thumb_outer_root
+            - index_outer_tip
+            - index_outer_root
+            - middle_outer_tip
+            - middle_outer_root
+            - ring_outer_tip
+            - ring_outer_root
+            - little_outer_tip
+            - little_outer_root
+            - null
+            
+        objectives:
+          penetration: 0
+          contact: 0.0
+          regularization: 0.0
+          smooth: 1
+          thumb_open: 0
+          obj_position: 10
+
+        kwargs:
+          smooth_extend_frames: 20
+          smooth_all: true
+          positive_depth: 1.0e-2
+          use_thumb_open_mask: false
+
+    - alter:
+        name: alter2
+        iterations: 50
+        parameters:
+          mano_pose: true
+          mano_rotation: false
+          mano_translation: false
+        
+        using_mano_parts:
+          optimize_parts:
+          optimize_parts:
+            - thumb_inner_tip
+            - thumb_inner_root
+            - thumb_outer_tip
+            - thumb_outer_root
+          ignore_parts:
+            - palm
+            - palm_wrist
+            - index_inner_tip
+            - middle_inner_tip
+            - ring_inner_tip
+            - little_inner_tip
+            - index_inner_root
+            - middle_inner_root
+            - ring_inner_root
+            - little_inner_root
+            - hand_back
+            - index_outer_tip
+            - index_outer_root
+            - middle_outer_tip
+            - middle_outer_root
+            - ring_outer_tip
+            - ring_outer_root
+            - little_outer_tip
+            - little_outer_root
+            - null
+            
+        objectives:
+          penetration: 0
+          contact: 0
+          regularization: 0.0
+          smooth: 10
+          thumb_open: 1.0e-3
+          obj_position: 0
+
+        kwargs:
+          smooth_extend_frames: 20
+          smooth_all: false
+          contact_target_distance: 0 # 
+          penetration_sigma: 1.0e-3 # require 1e-3(distance) gap
+          positive_depth: 1.0e-2
+          use_thumb_open_mask: true
