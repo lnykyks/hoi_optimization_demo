@@ -17,7 +17,7 @@ whole sequences:
 
 | before optimization | after optimization |
 | --- | --- |
-| ![video-init](demo/pour-cola_4265/video/init/render-3_105_45-init.mp4) | ![video-optim](demo/pour-cola_4265/video/optim/render-3_105_45-optim.mp4) |
+| <video src="./demo/pour-cola_4265/video/init/render-3_105_45-init.mp4" controls="controls" width="100%"></video> | <video src="demo/pour-cola_4265/video/optim/render-3_105_45-optim.mp4" controls="controls" width="100%"></video> |
 
 ### Demo 2: pick-up milk
 
@@ -30,7 +30,7 @@ whole sequences:
 
 | before optimization | after optimization |
 | --- | --- |
-| ![video-init](demo/pickup-milk_9708/video/init/render-3_105_45-init.mp4) | ![video-optim](demo/pickup-milk_9708/video/optim/render-3_105_45-optim.mp4) |
+| <video src="./demo/pickup-milk_9708/video/init/render-3_105_45-init.mp4" controls="controls" width="100%"></video> | <video src="demo/pickup-milk_9708/video/optim/render-3_105_45-optim.mp4" controls="controls" width="100%"></video> |
 
 ## Citation
 
