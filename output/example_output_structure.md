@@ -3,6 +3,8 @@
 ```text
 output/
 ├── config.yaml
+├── backup/
+│   └── ...
 ├── log/
 │   ├── run log
 │   └── loss curve
