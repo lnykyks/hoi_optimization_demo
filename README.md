@@ -128,7 +128,7 @@ hoi_optimization_demo/
 
 ## TODO
 
-- [ ] upload a figure that depicts that optimization pipeline
+- [ ] upload a figure that depicts the optimization pipeline
 - [ ] release a lightweight version of code
 
 ## Citation
