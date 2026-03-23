@@ -126,6 +126,11 @@ hoi_optimization_demo/
     - before/after visualization outputs(could be used for rendering)
   - config.yaml
 
+## TODO
+
+- [ ] upload a figure that depicts that optimization pipeline
+- [ ] release a lightweight version of code
+
 ## Citation
 
 If you find this repository relevant, please also refer to and cite the broader RoboWheel project:
