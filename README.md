@@ -21,7 +21,7 @@ This pipeline supports multi-stage dynamic parameter optimization and is mainly 
 | --- | --- | --- |
 | frame 80 | ![frame80-init](./demo/pour-cola_4265/image/init/frame_0080.png) | ![frame80-optim](./demo/pour-cola_4265/image/optim/frame_0080.png) |
 | frame 120 | ![frame120-init](./demo/pour-cola_4265/image/init/frame_0120.png) | ![frame120-optim](./demo/pour-cola_4265/image/optim/frame_0120.png) |
-| all | [video-init](./demo/pour-cola_4265/video/init/render-3_105_45-init.mp4) | [vdeo-optim]("./demo/pour-cola_4265/video/optim/render-3_105_45-optim.mp4") |
+| all | [video-init](./demo/pour-cola_4265/video/init/render-3_105_45-init.mp4) | [vdeo-optim](./demo/pour-cola_4265/video/optim/render-3_105_45-optim.mp4) |
 
 <!-- whole sequences:
 
@@ -35,7 +35,7 @@ This pipeline supports multi-stage dynamic parameter optimization and is mainly 
 | --- | --- | --- |
 | frame 80 | ![frame80-init](./demo/pickup-milk_9708/image/init/frame_0080.png) | ![frame80-optim](./demo/pickup-milk_9708/image/optim/frame_0080.png) |
 | frame 125 | ![frame125-init](./demo/pickup-milk_9708/image/init/frame_0125.png) | ![frame125-optim](./demo/pickup-milk_9708/image/optim/frame_0125.png) |
-| all | [video-init](./demo/pickup-milk_9708/video/init/render-3_105_45-init.mp4) | [vdeo-optim]("./demo/pickup-milk_9708/video/optim/render-3_105_45-optim.mp4") |
+| all | [video-init](./demo/pickup-milk_9708/video/init/render-3_105_45-init.mp4) | [vdeo-optim](./demo/pickup-milk_9708/video/optim/render-3_105_45-optim.mp4) |
 
 <!-- whole sequences:
 
